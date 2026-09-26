@@ -254,7 +254,6 @@
     <section id="form-section" class="py-20 px-4 max-w-3xl mx-auto">
         <div class="text-center space-y-2 mb-10">
             <h2 class="text-3xl sm:text-4xl text-[#4a403a] tracking-widest font-serif">出席回函</h2>
-            <p class="text-xs sm:text-sm text-stone-500 tracking-wider">RSVP FORM</p>
         </div>
 
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
@@ -336,6 +335,7 @@
                     <option value="其他">其他</option>
                 </select>
                 <input type="hidden" id="entry_babyChair" name="entry.1190297207" value="">
+                <input type="hidden" id="entry_babyChair_other" name="entry.1190297207.other_option_response" value="" disabled>
                 <input type="text" id="babyChairCustomInput" placeholder="請註明詳細需求"
                        class="hidden w-full px-4 py-3 mt-2 rounded-xl border border-stone-200 bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#d4a373] transition text-sm">
             </div>
@@ -353,6 +353,7 @@
                     <option value="其他">其他</option>
                 </select>
                 <input type="hidden" id="entry_dietary" name="entry.1045008117" value="">
+                <input type="hidden" id="entry_dietary_other" name="entry.1045008117.other_option_response" value="" disabled>
                 <input type="text" id="dietaryCustomInput" placeholder="請註明飲食需求細節"
                        class="hidden w-full px-4 py-3 mt-2 rounded-xl border border-stone-200 bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#d4a373] transition text-sm">
             </div>
@@ -469,16 +470,41 @@
                 customInputEl.classList.add('hidden');
                 customInputEl.value = '';
             }
+            syncHiddenEntries();
         }
 
         function syncHiddenEntries() {
+            // 兒童座椅同步
             const babyChairVal = document.getElementById('babyChairSelect').value;
             const babyChairCustomVal = document.getElementById('babyChairCustomInput').value;
-            document.getElementById('entry_babyChair').value = (babyChairVal === '其他') ? (babyChairCustomVal || '其他') : babyChairVal;
+            const babyChairEntry = document.getElementById('entry_babyChair');
+            const babyChairOtherEntry = document.getElementById('entry_babyChair_other');
 
+            if (babyChairVal === '其他') {
+                babyChairEntry.value = '__other_option__';
+                babyChairOtherEntry.value = babyChairCustomVal || '其他';
+                babyChairOtherEntry.disabled = false;
+            } else {
+                babyChairEntry.value = babyChairVal;
+                babyChairOtherEntry.value = '';
+                babyChairOtherEntry.disabled = true;
+            }
+
+            // 飲食需求同步
             const dietaryVal = document.getElementById('dietarySelect').value;
             const dietaryCustomVal = document.getElementById('dietaryCustomInput').value;
-            document.getElementById('entry_dietary').value = (dietaryVal === '其他') ? (dietaryCustomVal || '其他') : dietaryVal;
+            const dietaryEntry = document.getElementById('entry_dietary');
+            const dietaryOtherEntry = document.getElementById('entry_dietary_other');
+
+            if (dietaryVal === '其他') {
+                dietaryEntry.value = '__other_option__';
+                dietaryOtherEntry.value = dietaryCustomVal || '其他';
+                dietaryOtherEntry.disabled = false;
+            } else {
+                dietaryEntry.value = dietaryVal;
+                dietaryOtherEntry.value = '';
+                dietaryOtherEntry.disabled = true;
+            }
         }
 
         function sendDataToGAS(url) {
