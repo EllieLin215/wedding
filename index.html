@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rick & Ellie's Wedding Invitation</title>
+    <title>Rick &amp; Ellie's Wedding Invitation</title>
     
+    <!-- 社群分享 (Open Graph) 設定 -->
+    <meta property="og:title" content="Rick &amp; Ellie's Wedding Invitation">
+    <meta property="og:description" content="And So Our Forever Begins — 誠摯邀請您參與我們的婚禮盛會">
+    <meta property="og:image" content="https://i.postimg.cc/PrMw5PM2/IMG-0078.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card 設定 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rick &amp; Ellie's Wedding Invitation">
+    <meta name="twitter:description" content="And So Our Forever Begins — 誠摯邀請您參與我們的婚禮盛會">
+    <meta name="twitter:image" content="https://i.postimg.cc/PrMw5PM2/IMG-0078.jpg">
+
     <!-- Google Fonts: Cormorant Garamond & Noto Serif TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,11 +82,8 @@
     <!-- 2. 首頁全螢幕封面 Cover Hero -->
     <header class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <!-- 使用 HTML5 picture 標籤支援手機版與電腦版自動切換獨立照片 -->
             <picture class="w-full h-full block">
-                <!-- 手機版照片 (螢幕寬度小於 768px 時自動切換) -->
                 <source media="(max-width: 767px)" srcset="https://i.postimg.cc/PrMw5PM2/IMG-0078.jpg">
-                <!-- 電腦版照片 (預設/大螢幕) -->
                 <img src="https://i.postimg.cc/PrMw5PM2/IMG-0078.jpg" alt="Rick Huang & Ellie Lin" class="w-full h-full object-cover object-[center_25%] md:object-center filter brightness-[0.92]">
             </picture>
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
@@ -138,8 +147,9 @@
         </div>
         <h2 class="font-serif-en text-3xl sm:text-4xl text-[#4a403a] tracking-widest">OUR STORY</h2>
         <p class="text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose text-stone-600 font-light max-w-3xl mx-auto">
-            其實也沒有什麼驚天動地的浪漫劇情，就是突然發現，只要有你在身邊，<br>原本普通的日子都會閃閃發光。<br class="hidden md:inline">
-            謝謝我們選擇了彼此，成為這輩子最合拍的玩伴，一起探索世界。<br class="hidden md:inline">
+            其實也沒有什麼驚天動地的浪漫劇情，就是突然發現，<br>
+            只要有你在身邊，原本普通的日子都會閃閃發光。<br>
+            謝謝我們選擇了彼此，成為這輩子最合拍的玩伴，一起探索世界。<br>
             誠摯邀請最親愛的你們，來見證我們邁入人生下一個幸福時刻！
             <span class="font-serif-en text-base sm:text-lg md:text-xl italic block mt-4 leading-relaxed">
                 Nothing overly dramatic, no movie-like romance—just the simple realization that with you around, even the ordinary days start to shine.<br class="hidden md:inline">
@@ -180,9 +190,9 @@
                     </p>
                 </div>
 
-                <div class="space-y-4 pt-2">
+                <div class="space-y-1 pt-2">
                     <span class="text-xs uppercase tracking-widest text-[#8da399] font-semibold">DRESS CODE</span>
-                    <h4 class="text-sm font-medium text-[#4a403a] tracking-widest pt-1">大地色系</h4>
+                    <h4 class="text-sm font-medium text-[#8da399] tracking-widest mt-0.5">大地色系</h4>
                     
                     <div class="flex justify-center items-center space-x-6 sm:space-x-8 pt-2">
                         <div class="flex flex-col items-center space-y-2">
@@ -223,13 +233,13 @@
                     <button onclick="toggleAccordion('acc-car')" class="w-full px-6 py-4 text-left font-medium text-[#4a403a] flex justify-between items-center hover:bg-white/50 transition">
                         <span class="flex items-center space-x-3 text-sm sm:text-base">
                             <span class="text-[#d4a373]">🚗</span>
-                            <span>自行開車 & 停車 PARKING</span>
+                            <span>自行開車 &amp; 停車 PARKING</span>
                         </span>
                         <span id="acc-car-icon" class="text-stone-400 transform transition-transform duration-200">▼</span>
                     </button>
                     <div id="acc-car" class="hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100">
                         國道一號（堤頂交流道下）→左轉駛向堤頂大道→ 樂群二路左轉後再右轉植福路即可抵達。<br>
-                        飯店設有地下停車場，賓客可享免費停放服務。
+                        飯店設有付費地下停車場。
                     </div>
                 </div>
 
@@ -427,7 +437,6 @@
     <!-- JavaScript 邏輯控制 -->
     <script>
         // 💡 若 Google 表單已連結 Google 試算表，請保持空字串 "" 避免重複寫入資料
-        // （Google 表單原生會自動同步資料至 Google Sheet，無需透過 GAS 追加）
         const GAS_WEB_APP_URL = "";
 
         window.submitted = false;
@@ -450,7 +459,6 @@
                     syncHiddenEntries();
                     window.submitted = true;
 
-                    // 若有設定 GAS API 才執行非同步發送
                     if (GAS_WEB_APP_URL && GAS_WEB_APP_URL.trim() !== "") {
                         sendDataToGAS(GAS_WEB_APP_URL);
                     }
