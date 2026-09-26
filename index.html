@@ -56,9 +56,8 @@
     <!-- 1. 導覽列 Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-serif-en text-base sm:text-2xl font-semibold tracking-widest text-[#d4a373] hover:opacity-80 transition whitespace-nowrap">
-                <span class="sm:hidden">Rick &amp; Ellie</span>
-                <span class="hidden sm:inline">Rick Huang &amp; Ellie Lin</span>
+            <a href="#" class="font-serif-en text-lg sm:text-2xl font-bold tracking-widest text-[#d4a373] hover:opacity-80 transition whitespace-nowrap pl-[1cm]">
+                R &amp; E
             </a>
             <div class="flex space-x-2.5 sm:space-x-8 text-[11px] sm:text-sm tracking-wider sm:tracking-widest text-[#4a403a] whitespace-nowrap">
                 <a href="#about" class="hover:text-[#d4a373] transition duration-200">關於我們</a>
@@ -139,13 +138,14 @@
         </div>
         <h2 class="font-serif-en text-3xl sm:text-4xl text-[#4a403a] tracking-widest">OUR STORY</h2>
         <p class="text-sm sm:text-base leading-relaxed text-stone-600 font-light max-w-xl mx-auto">
-            Nothing overly dramatic, no movie-like romance—just the simple realization that with you around, even the ordinary days start to shine.<br>
-            Thank you for choosing me, and for being my favorite partner-in-crime for life.<br>
-            We warmly invite you, our loved ones, to witness and celebrate the start of our next big chapter!<br>
-            <br>
             其實也沒有什麼驚天動地的浪漫劇情，就是突然發現，只要有你在身邊，原本普通的日子都會閃閃發光。<br>
             謝謝我們選擇了彼此，成為這輩子最合拍的玩伴<br>
             誠摯邀请最親愛的你們，來見證我們邁入人生下一關的幸福時刻！<br>
+            <span class="font-serif-en text-base sm:text-lg italic block mt-3">
+                Nothing overly dramatic, no movie-like romance—just the simple realization that with you around, even the ordinary days start to shine.<br>
+                Thank you for choosing me, and for being my favorite partner-in-crime for life.<br>
+                We warmly invite you, our loved ones, to witness and celebrate the start of our next big chapter!
+            </span>
         </p>
     </section>
 
@@ -170,14 +170,18 @@
                 <div class="space-y-3 pb-8 border-b border-stone-200/60">
                     <span class="text-xs uppercase tracking-widest text-[#8da399] font-semibold">LOCATION</span>
                     <h3 class="text-2xl sm:text-3xl font-serif text-[#4a403a] font-semibold whitespace-nowrap">維多利亞酒店</h3>
-                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-md mx-auto">
+                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-md mx-auto flex items-center justify-center gap-1.5 flex-wrap">
                         <span class="whitespace-nowrap">10491臺北市中山區金泰里敬業四路168號</span>
+                        <a href="https://maps.app.goo.gl/zj18TG9xzXKT3CoTA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[#d4a373] hover:text-[#c39262] transition transform hover:scale-110" title="開啟 Google 地圖導航">
+                            <svg class="w-4 h-4 inline-block" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                        </a>
                     </p>
                 </div>
 
                 <div class="space-y-4 pt-2">
                     <span class="text-xs uppercase tracking-widest text-[#8da399] font-semibold">DRESS CODE</span>
-                    <p class="text-sm text-stone-600">著裝建議色彩：淺杏色、奶茶色、淺大地色</p>
                     
                     <div class="flex justify-center items-center space-x-6 sm:space-x-8 pt-2">
                         <div class="flex flex-col items-center space-y-2">
@@ -210,7 +214,7 @@
                         <span id="acc-mrt-icon" class="text-stone-400 transform transition-transform duration-200">▼</span>
                     </button>
                     <div id="acc-mrt" class="hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100">
-                        請搭乘<span class="whitespace-nowrap font-medium text-[#4a403a]">捷運文湖線劍南路站3號出口</span>，出站後步行約 3 分鐘即可抵達維多利亞酒店。
+                        請搭乘<span class="whitespace-nowrap font-medium text-[#4a403a]">捷運文湖線劍南路站3號出口</span>，出站後步行約 7 分鐘即可抵達維多利亞酒店。
                     </div>
                 </div>
 
@@ -223,7 +227,7 @@
                         <span id="acc-car-icon" class="text-stone-400 transform transition-transform duration-200">▼</span>
                     </button>
                     <div id="acc-car" class="hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100">
-                        國道一號（堤頂交流道下）→ 接堤頂大道直行 → 左轉敬業三路即可抵達。<br>
+                        國道一號（堤頂交流道下）→左轉駛向堤頂大道→ 樂群二路左轉 後再右轉植福路即可抵達。<br>
                         飯店設有地下停車場，賓客可享免費停放服務。
                     </div>
                 </div>
@@ -237,7 +241,7 @@
                         <span id="acc-bus-icon" class="text-stone-400 transform transition-transform duration-200">▼</span>
                     </button>
                     <div id="acc-bus" class="hidden px-6 pb-5 pt-1 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100">
-                        可搭乘 21、28、33、72、222、247、267、286、287、620、646、677、902、藍7、藍26 至<span class="whitespace-nowrap font-medium text-[#4a403a]">「捷運劍南路站」</span>下車。
+                        可搭乘28、222、247、267、268、內湖幹線(287)、620、646、72、902、紅2、藍7、藍26等數十路公車可到達<span class="whitespace-nowrap font-medium text-[#4a403a]">美麗華站</span>，步行約3分鐘即到達維多麗亞酒店。
                     </div>
                 </div>
             </div>
@@ -248,7 +252,7 @@
     <section id="form-section" class="py-20 px-4 max-w-3xl mx-auto">
         <div class="text-center space-y-2 mb-10">
             <h2 class="text-3xl sm:text-4xl text-[#4a403a] tracking-widest font-serif">出席回函</h2>
-            <p class="text-xs sm:text-sm text-stone-500 tracking-wider">請於 2026 年 12 月 31 日前完成填寫</p>
+            <p class="text-xs sm:text-sm text-stone-500 tracking-wider"></p>
         </div>
 
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
@@ -396,7 +400,7 @@
 
     <!-- 頁尾 Footer -->
     <footer class="py-10 text-center text-xs text-stone-400 space-y-2 bg-[#f9f6f0]">
-        <p class="font-serif-en text-sm tracking-widest text-[#d4a373]">Rick Huang & Ellie Lin 2027</p>
+        <p class="font-serif-en text-sm tracking-widest text-[#d4a373] font-bold">Rick &amp; Ellie  2027</p>
         <p>Thank you for being part of our story.</p>
     </footer>
 
