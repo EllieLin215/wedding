@@ -171,7 +171,7 @@
         </div>
         <h2 class="font-serif-en text-3xl sm:text-4xl text-[#4a403a] tracking-widest">OUR STORY</h2>
         <p class="text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose text-stone-600 font-light max-w-3xl mx-auto">
-            其實也沒有什麼驚天動地的浪漫劇情，<br>
+            其實也沒有什麼驚天動地的浪漫劇情，就是突然發現，<br>
             只要有你在身邊，原本普通的日子都會閃閃發光。<br>
             謝謝我們選擇了彼此，<br class="md:hidden">成為這輩子最合拍的玩伴，一起探索世界。<br>
             誠摯邀請最親愛的你們，<br class="md:hidden">來見證我們邁入人生下一個幸福時刻！
@@ -459,6 +459,9 @@
 
     <!-- JavaScript 邏輯控制 -->
     <script>
+        // 💡 停用 GAS 重複發送（由 Google 表單原生的 hidden_iframe 自動同步至試算表即可）
+        const GAS_WEB_APP_URL = "";
+
         window.submitted = false;
 
         let currentSlideIndex = 0;
@@ -493,6 +496,11 @@
                     if (submitBtn) {
                         submitBtn.disabled = true;
                         submitBtn.innerText = "傳送中...";
+                    }
+
+                    // 僅在有設定 GAS_WEB_APP_URL 時才呼叫
+                    if (GAS_WEB_APP_URL && GAS_WEB_APP_URL.trim() !== "") {
+                        sendDataToGAS(GAS_WEB_APP_URL);
                     }
                 });
             }
@@ -586,6 +594,16 @@
             const dietaryVal = document.getElementById('dietarySelect').value;
             const dietaryCustomVal = document.getElementById('dietaryCustomInput').value;
             document.getElementById('entry_dietary').value = (dietaryVal === '其他') ? (dietaryCustomVal || '其他') : dietaryVal;
+        }
+
+        function sendDataToGAS(url) {
+            const formData = new FormData(document.getElementById('weddingForm'));
+            fetch(url, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => console.log("Form successfully posted to GAS"))
+              .catch(err => console.error("GAS Post Error:", err));
         }
 
         function startCountdown() {
