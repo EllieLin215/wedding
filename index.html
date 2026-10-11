@@ -96,21 +96,21 @@
         </div>
 
         <!-- 左右手動切換按鈕 -->
-        <button onclick="prevHeroSlide()" aria-label="上一張照片" class="absolute left-3 sm:left-6 z-20 p-2 sm:p-3 rounded-full bg-black/20 hover:bg-black/50 text-white/80 hover:text-white backdrop-blur-sm transition duration-300 focus:outline-none transform hover:scale-105">
+        <button type="button" onclick="prevHeroSlide()" aria-label="上一張照片" class="absolute left-3 sm:left-6 z-30 p-2 sm:p-3 rounded-full bg-black/30 hover:bg-black/60 text-white/80 hover:text-white backdrop-blur-sm transition duration-300 focus:outline-none transform hover:scale-105 cursor-pointer">
             <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
         </button>
-        <button onclick="nextHeroSlide()" aria-label="下一張照片" class="absolute right-3 sm:right-6 z-20 p-2 sm:p-3 rounded-full bg-black/20 hover:bg-black/50 text-white/80 hover:text-white backdrop-blur-sm transition duration-300 focus:outline-none transform hover:scale-105">
+        <button type="button" onclick="nextHeroSlide()" aria-label="下一張照片" class="absolute right-3 sm:right-6 z-30 p-2 sm:p-3 rounded-full bg-black/30 hover:bg-black/60 text-white/80 hover:text-white backdrop-blur-sm transition duration-300 focus:outline-none transform hover:scale-105 cursor-pointer">
             <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
         </button>
 
         <!-- 輪播圓點指示器 -->
-        <div class="absolute bottom-16 sm:bottom-20 z-20 flex space-x-2.5 items-center">
-            <button onclick="setHeroSlide(0)" class="hero-dot w-6 h-2.5 sm:h-3 rounded-full bg-white transition-all duration-300 focus:outline-none" aria-label="第 1 張照片"></button>
-            <button onclick="setHeroSlide(1)" class="hero-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 focus:outline-none" aria-label="第 2 張照片"></button>
+        <div class="absolute bottom-16 sm:bottom-20 z-30 flex space-x-2.5 items-center">
+            <button type="button" onclick="setHeroSlide(0)" class="hero-dot w-6 h-2.5 sm:h-3 rounded-full bg-white transition-all duration-300 focus:outline-none cursor-pointer" aria-label="第 1 張照片"></button>
+            <button type="button" onclick="setHeroSlide(1)" class="hero-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 focus:outline-none cursor-pointer" aria-label="第 2 張照片"></button>
         </div>
 
         <div class="relative z-10 px-4 sm:px-6 max-w-3xl mx-auto text-white space-y-4 pointer-events-none">
