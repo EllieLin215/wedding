@@ -79,18 +79,42 @@
         </div>
     </nav>
 
-    <!-- 2. 首頁全螢幕封面 Cover Hero -->
-    <header class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
+    <!-- 2. 首頁全螢幕封面 Cover Hero (雙照片輪播) -->
+    <header class="relative w-full h-screen flex items-center justify-center text-center overflow-hidden group">
+        <!-- 輪播照片容器 Carousel Container -->
         <div class="absolute inset-0 z-0">
-            <picture class="w-full h-full block">
-                <source media="(max-width: 767px)" srcset="https://i.postimg.cc/PrMw5PM2/IMG-0078.jpg">
-                <img src="https://i.postimg.cc/PrMw5PM2/IMG-0078.jpg" alt="Rick Huang & Ellie Lin" class="w-full h-full object-cover object-[center_25%] md:object-center filter brightness-[0.92]">
-            </picture>
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
+            <!-- 照片 1 -->
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
+                <img src="https://i.postimg.cc/PrMw5PM2/IMG-0078.jpg" alt="Rick Huang & Ellie Lin 1" class="w-full h-full object-cover object-[center_25%] md:object-center filter brightness-[0.92]">
+            </div>
+            <!-- 照片 2 -->
+            <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                <img src="https://i.postimg.cc/vBK2xBDK/IMG-0083.jpg" alt="Rick Huang & Ellie Lin 2" class="w-full h-full object-cover object-[center_25%] md:object-center filter brightness-[0.92]">
+            </div>
+            <!-- 暗色漸層遮罩 -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50 pointer-events-none z-10"></div>
         </div>
 
-        <div class="relative z-10 px-4 sm:px-6 max-w-3xl mx-auto text-white space-y-4">
-            <h1 class="font-serif-en text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold sm:font-bold tracking-wider leading-tight whitespace-nowrap drop-shadow-md">
+        <!-- 左右手動切換按鈕 -->
+        <button onclick="prevHeroSlide()" aria-label="上一張照片" class="absolute left-3 sm:left-6 z-20 p-2 sm:p-3 rounded-full bg-black/20 hover:bg-black/50 text-white/80 hover:text-white backdrop-blur-sm transition duration-300 focus:outline-none transform hover:scale-105">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button onclick="nextHeroSlide()" aria-label="下一張照片" class="absolute right-3 sm:right-6 z-20 p-2 sm:p-3 rounded-full bg-black/20 hover:bg-black/50 text-white/80 hover:text-white backdrop-blur-sm transition duration-300 focus:outline-none transform hover:scale-105">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <!-- 輪播圓點指示器 -->
+        <div class="absolute bottom-16 sm:bottom-20 z-20 flex space-x-2.5 items-center">
+            <button onclick="setHeroSlide(0)" class="hero-dot w-6 h-2.5 sm:h-3 rounded-full bg-white transition-all duration-300 focus:outline-none" aria-label="第 1 張照片"></button>
+            <button onclick="setHeroSlide(1)" class="hero-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300 focus:outline-none" aria-label="第 2 張照片"></button>
+        </div>
+
+        <div class="relative z-10 px-4 sm:px-6 max-w-3xl mx-auto text-white space-y-4 pointer-events-none">
+            <h1 class="font-serif-en text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold sm:font-bold tracking-wider leading-tight whitespace-nowrap drop-shadow-md">
                 Rick Huang <span class="text-white italic font-semibold sm:font-bold">&amp;</span> Ellie Lin
             </h1>
             <p class="text-base sm:text-xl md:text-2xl font-medium sm:font-semibold tracking-widest text-stone-100 pt-2 font-serif-en italic drop-shadow-sm">
@@ -98,7 +122,7 @@
             </p>
         </div>
 
-        <a href="#countdown" class="absolute bottom-8 z-10 text-white/70 hover:text-white transition animate-bounce">
+        <a href="#countdown" class="absolute bottom-6 sm:bottom-8 z-20 text-white/70 hover:text-white transition animate-bounce">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
