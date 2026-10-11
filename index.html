@@ -171,7 +171,7 @@
         </div>
         <h2 class="font-serif-en text-3xl sm:text-4xl text-[#4a403a] tracking-widest">OUR STORY</h2>
         <p class="text-sm sm:text-base md:text-lg leading-relaxed sm:leading-loose text-stone-600 font-light max-w-3xl mx-auto">
-            其實也沒有什麼驚天動地的浪漫劇情，就是突然發現，<br>
+            其實也沒有什麼驚天動地的浪漫劇情，<br>
             只要有你在身邊，原本普通的日子都會閃閃發光。<br>
             謝謝我們選擇了彼此，<br class="md:hidden">成為這輩子最合拍的玩伴，一起探索世界。<br>
             誠摯邀請最親愛的你們，<br class="md:hidden">來見證我們邁入人生下一個幸福時刻！
@@ -194,7 +194,7 @@
             <!-- V-Card 垂直卡片設計 -->
             <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-card-glow space-y-8 text-center max-w-2xl mx-auto border border-white">
                 <div class="space-y-3 pb-8 border-b border-stone-200/60">
-                    <span class="text-xs uppercase tracking-widest text-[#8da399] font-semibold">DATE & TIME</span>
+                    <span class="text-xs uppercase tracking-widest text-[#8da399] font-semibold">DATE &amp; TIME</span>
                     <h3 class="text-xl sm:text-2xl font-medium text-[#4a403a]">2027 年 1 月 24 日 星期日</h3>
                     <p class="text-base sm:text-lg text-stone-600 font-medium">
                         12:00 入席 ｜ 12:30 準時開席
@@ -369,7 +369,6 @@
                     <option value="其他">其他</option>
                 </select>
                 <input type="hidden" id="entry_babyChair" name="entry.1190297207" value="">
-                <input type="hidden" id="entry_babyChair_other" name="entry.1190297207.other_option_response" value="" disabled>
                 <input type="text" id="babyChairCustomInput" placeholder="請註明詳細需求"
                        class="hidden w-full px-4 py-3 mt-2 rounded-xl border border-stone-200 bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#d4a373] transition text-sm">
             </div>
@@ -387,7 +386,6 @@
                     <option value="其他">其他</option>
                 </select>
                 <input type="hidden" id="entry_dietary" name="entry.1045008117" value="">
-                <input type="hidden" id="entry_dietary_other" name="entry.1045008117.other_option_response" value="" disabled>
                 <input type="text" id="dietaryCustomInput" placeholder="請註明飲食需求細節"
                        class="hidden w-full px-4 py-3 mt-2 rounded-xl border border-stone-200 bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#d4a373] transition text-sm">
             </div>
@@ -421,7 +419,7 @@
                 <label class="block text-xs sm:text-sm font-semibold tracking-wider text-[#4a403a]">
                     給新人的祝福 <span class="font-serif-en text-stone-400 uppercase font-normal ml-1">｜ BLESSINGS</span>
                 </label>
-                <textarea id="input_blessings" name="entry.770702832" rows="3" placeholder="請留下給 Rick Huang & Ellie Lin 的祝福話語..."
+                <textarea id="input_blessings" name="entry.770702832" rows="3" placeholder="請留下給 Rick Huang &amp; Ellie Lin 的祝福話語..."
                           class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#d4a373] transition text-sm"></textarea>
             </div>
 
@@ -459,11 +457,8 @@
         </div>
     </div>
 
-    <!-- JavaScript 邏輯控制 (包含關鍵的雙照片輪播控制) -->
+    <!-- JavaScript 邏輯控制 -->
     <script>
-        // 💡 GAS Web App URL
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxRRFKCcZZ4rrFyQjMbtEWqvbfXWQC6pTf58F8chEsxsGu1Kn8TB5QXNFa9M4YbJo4OOw/exec";
-
         window.submitted = false;
 
         let currentSlideIndex = 0;
@@ -486,11 +481,18 @@
             const weddingForm = document.getElementById('weddingForm');
             if (weddingForm) {
                 weddingForm.addEventListener('submit', function(e) {
+                    if (window.submitted) {
+                        e.preventDefault();
+                        return;
+                    }
                     syncHiddenEntries();
                     window.submitted = true;
-
-                    if (GAS_WEB_APP_URL && GAS_WEB_APP_URL.trim() !== "") {
-                        sendDataToGAS(GAS_WEB_APP_URL);
+                    
+                    // 停用按鈕防止連點
+                    const submitBtn = document.getElementById('submitBtn');
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerText = "傳送中...";
                     }
                 });
             }
@@ -586,16 +588,6 @@
             document.getElementById('entry_dietary').value = (dietaryVal === '其他') ? (dietaryCustomVal || '其他') : dietaryVal;
         }
 
-        function sendDataToGAS(url) {
-            const formData = new FormData(document.getElementById('weddingForm'));
-            fetch(url, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: formData
-            }).then(() => console.log("Form successfully posted to GAS"))
-              .catch(err => console.error("GAS Post Error:", err));
-        }
-
         function startCountdown() {
             const targetDate = new Date('2027-01-24T12:00:00').getTime();
 
@@ -651,6 +643,14 @@
             document.getElementById('weddingForm').reset();
             document.getElementById('babyChairCustomInput').classList.add('hidden');
             document.getElementById('dietaryCustomInput').classList.add('hidden');
+            
+            // 恢復送出按鈕狀態
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "送出回函 SUBMIT";
+            }
+
             window.submitted = false;
         }
 
@@ -668,3 +668,4 @@
     </script>
 </body>
 </html>
+```
